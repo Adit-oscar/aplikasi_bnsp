@@ -25,7 +25,7 @@
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
               <div class="text-center">
-                <img class="profile-user-img" src="../../../aplikasi_bnsp/assets/gambar/user.jpg" alt="User profile picture">
+                <img class="profile-user-img" src="../../../aplikasi_bnsp/assets/gambar/users.jpg" alt="User profile picture">
               </div>
 
               <h3 class="profile-username text-center">Aditiya Warman</h3>

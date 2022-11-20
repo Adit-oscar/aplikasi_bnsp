@@ -10,21 +10,22 @@ if (isset($_POST['tambah'])) {
   $tanggal_lahir = $_POST['tanggal_lahir'];
   $foto = $_FILES['foto']['name'];
 
-  $ekstensi_diperbolehkan    = array('png', 'jpg');
+  // memecah foto berdasarkan . untuk mengambil ekstensi foto
   $x = explode('.', $foto);
   $ekstensi = strtolower(end($x));
+
+  // rename foto berdasarkan nama
+  $rename_foto_berdasarkan_nama = $nama . '.' . $ekstensi;
+
+  $ekstensi_diperbolehkan    = array('png', 'jpg');
   $ukuran    = $_FILES['foto']['size'];
   $file_tmp = $_FILES['foto']['tmp_name'];
-
-  // move_uploaded_file($file_tmp, 'gambar/' . $foto);
-
-  // $file_tmp = $_FILES['foto']['tmp_name'];
 
   if ($foto != '') {
     if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
       if ($ukuran < 1044070) {
-        move_uploaded_file($file_tmp, '../../../assets/gambar/' . $foto);
-        $query  = "INSERT INTO siswa VALUES ('','$nisn','$nama','$alamat_lengkap','$alamat_kota','$tempat_lahir','$tanggal_lahir','$foto')";
+        move_uploaded_file($file_tmp, '../../../assets/gambar/' . $rename_foto_berdasarkan_nama);
+        $query  = "INSERT INTO siswa VALUES ('','$nisn','$nama','$alamat_lengkap','$alamat_kota','$tempat_lahir','$tanggal_lahir','$rename_foto_berdasarkan_nama')";
         $result = mysqli_query($koneksi, $query);
         if ($query) {
           echo "
@@ -66,8 +67,14 @@ if (isset($_POST['tambah'])) {
   $tanggal_lahir = $_POST['tanggal_lahir'];
   $foto = $_FILES['foto']['name'];
 
-  $ekstensi_diperbolehkan    = array('png', 'jpg');
+  // memecah foto berdasarkan . untuk mengambil ekstensi foto
   $x = explode('.', $foto);
+  $ekstensi = strtolower(end($x));
+
+  // rename foto berdasarkan nama
+  $rename_foto_berdasarkan_nama = $nama . '.' . $ekstensi;
+
+  $ekstensi_diperbolehkan    = array('png', 'jpg');
   $ekstensi = strtolower(end($x));
   $ukuran    = $_FILES['foto']['size'];
   $file_tmp = $_FILES['foto']['tmp_name'];
@@ -77,8 +84,15 @@ if (isset($_POST['tambah'])) {
   if ($foto != '') {
     if (in_array($ekstensi, $ekstensi_diperbolehkan) === true) {
       if ($ukuran < 1044070) {
-        move_uploaded_file($file_tmp, '../../../assets/gambar/' . $foto);
-        $query  = "UPDATE siswa SET nisn='$nisn', nama='$nama', alamat_lengkap='$alamat_lengkap', alamat_kota='$alamat_kota', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', foto='$foto' WHERE id='$id'";
+        // ambil gambar lama & hapus
+        $ambilGambarLama = "SELECT * FROM siswa WHERE id='$id'";
+        $gambarLama = $koneksi->query($ambilGambarLama);
+        $gambar = $gambarLama->fetch_assoc();
+        unlink('../../../assets/gambar/' . $gambar['foto']);
+
+        // upload gambar
+        move_uploaded_file($file_tmp, '../../../assets/gambar/' . $rename_foto_berdasarkan_nama);
+        $query  = "UPDATE siswa SET nisn='$nisn', nama='$nama', alamat_lengkap='$alamat_lengkap', alamat_kota='$alamat_kota', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', foto='$rename_foto_berdasarkan_nama' WHERE id='$id'";
         $result = mysqli_query($koneksi, $query);
         if ($query) {
           echo "
@@ -104,10 +118,26 @@ if (isset($_POST['tambah'])) {
       </script>";
     }
   } else {
-    echo "
-      <script>
-          alert('FILE TIDAK BOLEH KOSONG!')
-          window.location.href = '../.././../../aplikasi_bnsp/?view=editDataSiswa&id=$id'
-      </script>";
+    // ambil gambar lama
+    $ambilGambarLama = "SELECT * FROM siswa WHERE id='$id'";
+    $gambarLama = $koneksi->query($ambilGambarLama);
+    $fetchGambar = $gambarLama->fetch_assoc();
+    $gambar = $fetchGambar['foto'];
+
+    $query  = "UPDATE siswa SET nisn='$nisn', nama='$nama', alamat_lengkap='$alamat_lengkap', alamat_kota='$alamat_kota', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', foto='$gambar' WHERE id='$id'";
+    $result = mysqli_query($koneksi, $query);
+    if ($query) {
+      echo "
+                <script>
+                    alert('Data Berhasil Diubah')
+                    window.location.href = '../.././../../aplikasi_bnsp/?view=dataSiswa'
+                </script>";
+    } else {
+      echo "
+                <script>
+                    alert('Data Gagal Diubah')
+                    window.location.href = '../.././../../aplikasi_bnsp/?view=editDataSiswa'
+                </script>";
+    }
   }
 }

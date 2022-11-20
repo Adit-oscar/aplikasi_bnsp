@@ -70,7 +70,7 @@ $siswa = $result_sqlQuerySelectDataById->fetch_assoc();
                     <label for="exampleInputFile">Foto</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" name="foto" class="custom-file-input" id="foto" required>
+                        <input type="file" name="foto" class="custom-file-input" id="foto">
                         <label class="custom-file-label" for="foto">Choose file</label>
                       </div>
                       <div class="input-group-append">
