@@ -108,7 +108,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- SweetAlert -->
   <script src="assets/js/SweetAlert/sweetalert2.all.min.js"></script>
   <!-- js customs alert -->
-  <script src="assets/js/my_script.js"></script>
+  <script src="assets/js/script.js"></script>
 </body>
 
 </html>

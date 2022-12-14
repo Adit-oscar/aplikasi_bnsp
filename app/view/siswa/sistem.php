@@ -130,7 +130,7 @@ if (isset($_POST['tambah'])) {
     $query  = "UPDATE siswa SET nisn='$nisn', nama='$nama', alamat_lengkap='$alamat_lengkap', alamat_kota='$alamat_kota', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', foto='$gambar' WHERE id='$id'";
     $result = mysqli_query($koneksi, $query);
     if ($query) {
-      $_SESSION['flash-data'] = 'Diubah';
+      $_SESSION['flash-data'] = 'Berhasil Diubah';
       echo "
                 <script>
                     window.location.href = '../.././../../aplikasi_bnsp/?view=dataSiswa'
