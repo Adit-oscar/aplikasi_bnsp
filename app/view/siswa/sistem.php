@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 include '../../../../aplikasi_bnsp/app/confiq/koneksi.php';
 
 if (isset($_POST['tambah'])) {
@@ -28,15 +31,15 @@ if (isset($_POST['tambah'])) {
         $query  = "INSERT INTO siswa VALUES ('','$nisn','$nama','$alamat_lengkap','$alamat_kota','$tempat_lahir','$tanggal_lahir','$rename_foto_berdasarkan_nama')";
         $result = mysqli_query($koneksi, $query);
         if ($query) {
+          $_SESSION['flash-data'] = 'Berhasil Ditambahkan';
           echo "
                 <script>
-                    alert('Data Berhasil Ditambahkan')
                     window.location.href = '../.././../../aplikasi_bnsp/?view=dataSiswa'
                 </script>";
         } else {
+          $_SESSION['flash-data'] = 'Gagal Ditambahkan';
           echo "
                 <script>
-                    alert('Data Gagal Ditambahkan')
                     window.location.href = '../.././../../aplikasi_bnsp/?view=tambahDataSiswa'
                 </script>";
         }
@@ -44,16 +47,16 @@ if (isset($_POST['tambah'])) {
         echo 'UKURAN FILE TERLALU BESAR';
       }
     } else {
+      $_SESSION['flash-data'] = 'Ekstensi File Tidak Diperbolehkan';
       echo "
-    <script>
-          alert('EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN')
+      <script>
           window.location.href = '../.././../../aplikasi_bnsp/?view=tambahDataSiswa'
       </script>";
     }
   } else {
+    $_SESSION['flash-data'] = 'Foto Tidak Boleh Kosong';
     echo "
     <script>
-          alert('FOTO TIDAK BOLEH KOSONG!')
           window.location.href = '../.././../../aplikasi_bnsp/?view=tambahDataSiswa'
       </script>";
   }
@@ -95,15 +98,15 @@ if (isset($_POST['tambah'])) {
         $query  = "UPDATE siswa SET nisn='$nisn', nama='$nama', alamat_lengkap='$alamat_lengkap', alamat_kota='$alamat_kota', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', foto='$rename_foto_berdasarkan_nama' WHERE id='$id'";
         $result = mysqli_query($koneksi, $query);
         if ($query) {
+          $_SESSION['flash-data'] = 'Berhasil Diubah';
           echo "
                 <script>
-                    alert('Data Berhasil Diubah')
                     window.location.href = '../.././../../aplikasi_bnsp/?view=dataSiswa'
                 </script>";
         } else {
+          $_SESSION['flash-data'] = 'Gagal Diubah';
           echo "
                 <script>
-                    alert('Data Gagal Diubah')
                     window.location.href = '../.././../../aplikasi_bnsp/?view=editDataSiswa'
                 </script>";
         }
@@ -111,9 +114,9 @@ if (isset($_POST['tambah'])) {
         echo 'UKURAN FILE TERLALU BESAR';
       }
     } else {
+      $_SESSION['flash-data'] = 'Ekstensi File Tidak Diperbolehkan';
       echo "
       <script>
-          alert('EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN')
           window.location.href = '../.././../../aplikasi_bnsp/?view=editDataSiswa&id=$id'
       </script>";
     }
@@ -127,15 +130,15 @@ if (isset($_POST['tambah'])) {
     $query  = "UPDATE siswa SET nisn='$nisn', nama='$nama', alamat_lengkap='$alamat_lengkap', alamat_kota='$alamat_kota', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', foto='$gambar' WHERE id='$id'";
     $result = mysqli_query($koneksi, $query);
     if ($query) {
+      $_SESSION['flash-data'] = 'Diubah';
       echo "
                 <script>
-                    alert('Data Berhasil Diubah')
                     window.location.href = '../.././../../aplikasi_bnsp/?view=dataSiswa'
                 </script>";
     } else {
+      $_SESSION['flash-data'] = 'Gagal Diubah';
       echo "
                 <script>
-                    alert('Data Gagal Diubah')
                     window.location.href = '../.././../../aplikasi_bnsp/?view=editDataSiswa'
                 </script>";
     }

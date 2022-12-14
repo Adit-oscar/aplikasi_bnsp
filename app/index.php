@@ -29,15 +29,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
       </ul>
-
-      <!-- Right navbar links -->
-      <!-- <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="btn btn-success" href="#">
-            <i class="fas fa-sign-out-alt"> Keluar</i>
-          </a>
-        </li>
-      </ul> -->
     </nav>
     <!-- /.navbar -->
 
@@ -114,6 +105,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="assets/template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
   <script src="assets/template/dist/js/adminlte.min.js"></script>
+  <!-- SweetAlert -->
+  <script src="assets/js/SweetAlert/sweetalert2.all.min.js"></script>
+  <!-- js customs alert -->
+  <script src="assets/js/my_script.js"></script>
 </body>
 
 </html>

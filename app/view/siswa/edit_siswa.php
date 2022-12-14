@@ -1,4 +1,6 @@
 <?php
+session_start();
+session_destroy();
 include '../aplikasi_bnsp/app/confiq/koneksi.php';
 $id = $_GET['id'];
 $sqlQuerySelectDataById = "SELECT * FROM siswa WHERE id=$id";
