@@ -6,7 +6,7 @@ include '../aplikasi_bnsp/app/confiq/koneksi.php';
 ?>
 <div class="content-wrapper">
   <!-- Flashdata notifikasi -->
-  <div class="flash-data" data-flashdata="<?= isset($_SESSION['flash-data']) ? $_SESSION['flash-data'] : '' ?>" data-status="<?= isset($_SESSION['status']) ? $_SESSION['status'] : '' ?>"></div>
+  <div class="flash-data" data-flashdata="<?= isset($_SESSION['flash-data']) ? $_SESSION['flash-data'] : '' ?>" data-status="<?= isset($_SESSION['status']) ? $_SESSION['status'] : '' ?>" data-text="<?= isset($_SESSION['text']) ? $_SESSION['text'] : '' ?>"></div>
 
   <!-- Content Header (Page header) -->
   <div class="content-header">

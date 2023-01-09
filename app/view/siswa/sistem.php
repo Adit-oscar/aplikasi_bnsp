@@ -31,12 +31,14 @@ if (isset($_POST['tambah'])) {
         $query  = "INSERT INTO siswa VALUES ('','$nisn','$nama','$alamat_lengkap','$alamat_kota','$tempat_lahir','$tanggal_lahir','$rename_foto_berdasarkan_nama')";
         $result = mysqli_query($koneksi, $query);
         if ($query) {
+          $_SESSION['status'] = 'success';
           $_SESSION['flash-data'] = 'Berhasil Ditambahkan';
           echo "
                 <script>
                     window.location.href = '../.././../../aplikasi_bnsp/?view=dataSiswa'
                 </script>";
         } else {
+          $_SESSION['status'] = 'error';
           $_SESSION['flash-data'] = 'Gagal Ditambahkan';
           echo "
                 <script>
@@ -44,7 +46,8 @@ if (isset($_POST['tambah'])) {
                 </script>";
         }
       } else {
-        $_SESSION['status'] = 'gagal';
+        $_SESSION['status'] = 'error';
+        $_SESSION['text'] = 'Ukuran gambar terlalu besar!';
         $_SESSION['flash-data'] = 'Gagal Ditambahkan';
         echo "
               <script>
@@ -52,13 +55,17 @@ if (isset($_POST['tambah'])) {
               </script>";
       }
     } else {
-      $_SESSION['flash-data'] = 'Ekstensi File Tidak Diperbolehkan';
+      $_SESSION['status'] = 'error';
+      $_SESSION['text'] = 'Ekstensi File Tidak Diperbolehkan!';
+      $_SESSION['flash-data'] = 'Gagal Ditambahkan';
       echo "
       <script>
-          window.location.href = '../.././../../aplikasi_bnsp/?view=tambahDataSiswa'
+      window.location.href = '../.././../../aplikasi_bnsp/?view=tambahDataSiswa'
       </script>";
     }
   } else {
+    $_SESSION['status'] = 'error';
+    $_SESSION['text'] = 'Ekstensi File Tidak Diperbolehkan!';
     $_SESSION['flash-data'] = 'Foto Tidak Boleh Kosong';
     echo "
     <script>
@@ -103,23 +110,33 @@ if (isset($_POST['tambah'])) {
         $query  = "UPDATE siswa SET nisn='$nisn', nama='$nama', alamat_lengkap='$alamat_lengkap', alamat_kota='$alamat_kota', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', foto='$rename_foto_berdasarkan_nama' WHERE id='$id'";
         $result = mysqli_query($koneksi, $query);
         if ($query) {
+          $_SESSION['status'] = 'success';
           $_SESSION['flash-data'] = 'Berhasil Diubah';
           echo "
                 <script>
                     window.location.href = '../.././../../aplikasi_bnsp/?view=dataSiswa'
                 </script>";
         } else {
+          $_SESSION['status'] = 'error';
           $_SESSION['flash-data'] = 'Gagal Diubah';
           echo "
                 <script>
-                    window.location.href = '../.././../../aplikasi_bnsp/?view=editDataSiswa'
+                    window.location.href = '../.././../../aplikasi_bnsp/?view=editDataSiswa&id=$id'
                 </script>";
         }
       } else {
-        echo 'UKURAN FILE TERLALU BESAR';
+        $_SESSION['status'] = 'error';
+        $_SESSION['text'] = 'Ukuran gambar terlalu besar!';
+        $_SESSION['flash-data'] = 'Gagal Diubah';
+        echo "
+        <script>
+        window.location.href = '../.././../../aplikasi_bnsp/?view=editDataSiswa&id=$id'
+        </script>";
       }
     } else {
-      $_SESSION['flash-data'] = 'Ekstensi File Tidak Diperbolehkan';
+      $_SESSION['status'] = 'error';
+      $_SESSION['text'] = 'Ekstensi file tidak diperbolehkan!';
+      $_SESSION['flash-data'] = 'Gagal Diubah';
       echo "
       <script>
           window.location.href = '../.././../../aplikasi_bnsp/?view=editDataSiswa&id=$id'
@@ -135,12 +152,14 @@ if (isset($_POST['tambah'])) {
     $query  = "UPDATE siswa SET nisn='$nisn', nama='$nama', alamat_lengkap='$alamat_lengkap', alamat_kota='$alamat_kota', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', foto='$gambar' WHERE id='$id'";
     $result = mysqli_query($koneksi, $query);
     if ($query) {
+      $_SESSION['status'] = 'success';
       $_SESSION['flash-data'] = 'Berhasil Diubah';
       echo "
                 <script>
                     window.location.href = '../.././../../aplikasi_bnsp/?view=dataSiswa'
                 </script>";
     } else {
+      $_SESSION['status'] = 'error';
       $_SESSION['flash-data'] = 'Gagal Diubah';
       echo "
                 <script>

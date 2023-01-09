@@ -1,6 +1,7 @@
 <?php
 session_start();
 session_destroy();
+
 include '../aplikasi_bnsp/app/confiq/koneksi.php';
 $id = $_GET['id'];
 $sqlQuerySelectDataById = "SELECT * FROM siswa WHERE id=$id";
@@ -8,6 +9,9 @@ $result_sqlQuerySelectDataById = $koneksi->query($sqlQuerySelectDataById);
 $siswa = $result_sqlQuerySelectDataById->fetch_assoc();
 ?>
 <div class="content-wrapper">
+  <!-- Flashdata notifikasi -->
+  <div class="flash-data" data-flashdata="<?= isset($_SESSION['flash-data']) ? $_SESSION['flash-data'] : '' ?>" data-status="<?= isset($_SESSION['status']) ? $_SESSION['status'] : '' ?>" data-text="<?= isset($_SESSION['text']) ? $_SESSION['text'] : '' ?>"></div>
+
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
