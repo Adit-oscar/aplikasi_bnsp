@@ -1,11 +1,8 @@
 $(document).ready(function() {
   const flashData = $('.flash-data').data('flashdata');
+  const status = $('.flash-data').data('status');
 
-  if (flashData !== '' & flashData !== undefined){
-    Swal.fire({
-      icon: 'success',
-      title: 'Data Mahasiswa ' + flashData,
-      text: '',
-    })
-  }
+  console.log(flashData);
+  console.log(status);
+
 });

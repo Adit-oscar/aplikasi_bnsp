@@ -1,7 +1,13 @@
 <?php
+session_start();
+session_destroy();
+
 include '../aplikasi_bnsp/app/confiq/koneksi.php';
 ?>
 <div class="content-wrapper">
+  <!-- Flashdata notifikasi -->
+  <div class="flash-data" data-flashdata="<?= isset($_SESSION['flash-data']) ? $_SESSION['flash-data'] : '' ?>" data-status="<?= isset($_SESSION['status']) ? $_SESSION['status'] : '' ?>"></div>
+
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">

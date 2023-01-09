@@ -107,8 +107,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="assets/template/dist/js/adminlte.min.js"></script>
   <!-- SweetAlert -->
   <script src="assets/js/SweetAlert/sweetalert2.all.min.js"></script>
+  <!-- bs-custom-file-input -->
+  <script src="assets/template/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
   <!-- js customs alert -->
   <script src="assets/js/script.js"></script>
+  <!-- 
+  <script>
+    $(() => {
+      bsCustomFileInput.init();
+    });
+  </script> -->
+
 </body>
 
 </html>

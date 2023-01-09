@@ -44,7 +44,12 @@ if (isset($_POST['tambah'])) {
                 </script>";
         }
       } else {
-        echo 'UKURAN FILE TERLALU BESAR';
+        $_SESSION['status'] = 'gagal';
+        $_SESSION['flash-data'] = 'Gagal Ditambahkan';
+        echo "
+              <script>
+                  window.location.href = '../.././../../aplikasi_bnsp/?view=tambahDataSiswa'
+              </script>";
       }
     } else {
       $_SESSION['flash-data'] = 'Ekstensi File Tidak Diperbolehkan';
