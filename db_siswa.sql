@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2022 at 03:53 PM
+-- Generation Time: Jan 09, 2023 at 05:02 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -43,9 +43,7 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id`, `nisn`, `nama`, `alamat_lengkap`, `alamat_kota`, `tempat_lahir`, `tanggal_lahir`, `foto`) VALUES
-(73, '18041100', 'Ryan Aditya', 'Tamiang Layang', 'Tamiang Layang', 'Tamiang Layang', '1999-12-27', 'Ryan Foto Latar Biru.jpg'),
-(74, '18041113', 'Aditiya Warman', 'Balangan', 'Balangan', 'Balangan', '2000-06-27', 'Desain foto Ganti Baground 3 x 4.jpg'),
-(76, '18041106', 'Agus Solikin', 'Tamban', 'Tamban', 'Tamban', '2000-03-22', 'Foto Agus Latar Biru.jpg');
+(150, '11029898919', 'Ryan Aditya', 'Tamiang Layang', 'Tamiang Layang', 'Tamiang Layang', '1999-01-12', 'Ryan Aditya.jpg');
 
 --
 -- Indexes for dumped tables
@@ -65,7 +63,7 @@ ALTER TABLE `siswa`
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

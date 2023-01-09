@@ -2,6 +2,7 @@
 
 session_start();
 session_destroy();
+
 include '../aplikasi_bnsp/app/confiq/koneksi.php';
 ?>
 <div class="content-wrapper">

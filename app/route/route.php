@@ -1,4 +1,5 @@
 <?php
+
 include '../aplikasi_bnsp/app/confiq/koneksi.php';
 
 $view = isset($_GET['view']) ? $_GET['view'] : 'dashboard';
